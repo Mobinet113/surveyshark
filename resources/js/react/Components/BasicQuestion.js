@@ -1,21 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input, Form, Header } from 'semantic-ui-react';
+import {Form, Header, Segment} from 'semantic-ui-react';
 
 const BasicQuestion = (props) => {
 
   const handleChange = (evt) => {
-    this.props.onChange(evt);
+    props.onChange(evt);
   };
 
   return (
-    <Form.Field>
-      <Header as="h2">
-        {props.title}
-        <Header.Subheader>{props.subTitle}</Header.Subheader>
-      </Header>
-      <input placeholder={props.title} onChange={handleChange} />
-    </Form.Field>
+    <Segment>
+      <Form.Field>
+        <Header as="h2">
+          {props.title}
+          <Header.Subheader>{props.subTitle}</Header.Subheader>
+        </Header>
+        <input name={props.name} placeholder={props.title} onChange={handleChange}/>
+      </Form.Field>
+    </Segment>
   );
 };
 
@@ -24,7 +26,8 @@ BasicQuestion.defaultProps = {
   title: null,
   subTitle: null,
   placeholder: null,
-  onChange: () => {}
+  onChange: () => {
+  }
 };
 
 BasicQuestion.propTypes = {
@@ -32,6 +35,7 @@ BasicQuestion.propTypes = {
   title: PropTypes.string,
   subTitle: PropTypes.string,
   placeholder: PropTypes.string,
+  name: PropTypes.string.required,
   onChange: PropTypes.func
 };
 
