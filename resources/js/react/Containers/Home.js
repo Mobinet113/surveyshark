@@ -1,6 +1,7 @@
 import React from 'react';
 import {Form, Container} from 'semantic-ui-react';
 import BasicQuestion from '../Components/BasicQuestion';
+import CheckboxQuestion from "../Components/CheckboxQuestion";
 
 class Home extends React.Component {
 
@@ -14,6 +15,10 @@ class Home extends React.Component {
 
   handleBasicInput = (evt) => {
     this.setState({answers: {...this.state.answers, [evt.target.name]: evt.target.value}});
+  };
+
+  handleCheckboxInput = (evt) => {
+    console.log(evt);
   };
 
   render() {
@@ -31,6 +36,24 @@ class Home extends React.Component {
                          name="questionTwo"
                          onChange={this.handleBasicInput}
                          placeholder="Question Two"/>
+
+          <CheckboxQuestion
+            title="Question Three"
+            name="questionThree"
+            subTitle="This is a short line about question three"
+            onChange={this.handleCheckboxInput}
+            answers={[
+              {
+                label: "Answer One",
+                name: "answerOne"
+              },
+              {
+                label: "Answer Two",
+                name: "answerTwo"
+              }
+            ]}
+          />
+
         </Form>
       </Container>
     )

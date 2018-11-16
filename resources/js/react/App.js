@@ -5,6 +5,7 @@ import store from './redux/store';
 import 'semantic-ui-css/semantic.min.css';
 import Routes from './Routes';
 import Header from "./Components/layout/Header";
+import Footer from "./Components/layout/Footer";
 
 export default class App extends Component {
   render() {
@@ -15,6 +16,8 @@ export default class App extends Component {
           <Header/>
 
           <Routes />
+
+          <Footer/>
 
         </div>
       </Provider>

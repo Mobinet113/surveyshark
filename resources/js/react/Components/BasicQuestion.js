@@ -26,6 +26,7 @@ BasicQuestion.defaultProps = {
   title: null,
   subTitle: null,
   placeholder: null,
+  name: null,
   onChange: () => {
   }
 };
@@ -35,7 +36,7 @@ BasicQuestion.propTypes = {
   title: PropTypes.string,
   subTitle: PropTypes.string,
   placeholder: PropTypes.string,
-  name: PropTypes.string.required,
+  name: PropTypes.string,
   onChange: PropTypes.func
 };
 
