@@ -2,6 +2,7 @@ import React from 'react';
 import {Form, Container} from 'semantic-ui-react';
 import BasicQuestion from '../Components/BasicQuestion';
 import CheckboxQuestion from "../Components/CheckboxQuestion";
+import BoolQuestion from '../Components/BoolQuestion';
 
 class Home extends React.Component {
 
@@ -9,6 +10,7 @@ class Home extends React.Component {
     super(props, context);
 
     this.state = {
+      loading: false,
       answers: []
     }
   }
@@ -17,8 +19,24 @@ class Home extends React.Component {
     this.setState({answers: {...this.state.answers, [evt.target.name]: evt.target.value}});
   };
 
+  /**
+   * Method to handle multi-checkbox questions
+   * @param evt
+   */
   handleCheckboxInput = (evt) => {
-    console.log(evt);
+    this.setState({
+      answers: {
+        ...this.state.answers,
+        [evt.name]: {
+          ...this.state.answers[evt.name],
+          [evt.value] : evt.checked
+        }
+      }
+    });
+  };
+
+  handleBoolInput = (evt) => {
+    this.setState({answers: {...this.state.answers, [evt.name]: evt.checked}});
   };
 
   render() {
@@ -52,6 +70,12 @@ class Home extends React.Component {
                 name: "answerTwo"
               }
             ]}
+          />
+
+          <BoolQuestion title="Question Four"
+                        subTitle="This is a short line about question four"
+                        name="questionFour"
+                        onChange={this.handleBoolInput}
           />
 
         </Form>
