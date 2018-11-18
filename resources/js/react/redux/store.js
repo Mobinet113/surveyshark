@@ -45,10 +45,11 @@ store.dispatch = addPromiseSupportToDispatch(store);
 store.subscribe(() => {
 
   let trackedState = {
-    user:  store.getState().user
+    answers:  store.getState().answers
   };
 
   localStorage.setItem( 'surveySharkState', JSON.stringify( trackedState ) )
+
 });
 
 export default store

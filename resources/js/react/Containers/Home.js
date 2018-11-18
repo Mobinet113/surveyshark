@@ -1,5 +1,8 @@
 import React from 'react';
-import {Form, Container} from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import {bindActionCreators} from "redux";
+import { submitAnswer, submitWaitingAnswers } from '../redux/modules/answer';
+import {Form, Container, Button} from 'semantic-ui-react';
 import BasicQuestion from '../Components/BasicQuestion';
 import CheckboxQuestion from "../Components/CheckboxQuestion";
 import BoolQuestion from '../Components/BoolQuestion';
@@ -15,6 +18,10 @@ class Home extends React.Component {
     }
   }
 
+  /**
+   * Method to handle simple input questions
+   * @param evt
+   */
   handleBasicInput = (evt) => {
     this.setState({answers: {...this.state.answers, [evt.target.name]: evt.target.value}});
   };
@@ -35,14 +42,22 @@ class Home extends React.Component {
     });
   };
 
+  /**
+   * Method to handle yes / no toggle questions
+   * @param evt
+   */
   handleBoolInput = (evt) => {
     this.setState({answers: {...this.state.answers, [evt.name]: evt.checked}});
+  };
+
+  handleSubmit = () => {
+    this.props.submitAnswer(this.state.answers);
   };
 
   render() {
     return (
       <Container>
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <BasicQuestion title="Question one"
                          subTitle="This is a short line about question one"
                          name="questionOne"
@@ -78,11 +93,25 @@ class Home extends React.Component {
                         onChange={this.handleBoolInput}
           />
 
+          <Button primary>Submit Answers</Button>
+
         </Form>
+
+        <Button onClick={ () =>  this.props.submitWaitingAnswers() }>Retry Submitting Answers</Button>
       </Container>
     )
   }
 }
 
+const mapStateToProps = state => ({
+  answers: state.answers
+});
 
-export default Home;
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    submitAnswer: submitAnswer,
+    submitWaitingAnswers: submitWaitingAnswers
+  }, dispatch)
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Answer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AnswerController extends Controller
 {
@@ -35,7 +36,20 @@ class AnswerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+      foreach ( $request->answers as $answerBasket) {
+
+        foreach ( $answerBasket as $answerIndex => $answeritem ) {
+          $answer = new Answer();
+
+          $answer->question_id = 0;
+          $answer->question_name = $answerIndex;
+          $answer->answer = json_encode( $answeritem );
+
+          $answer->save();
+        }
+
+      }
     }
 
     /**
