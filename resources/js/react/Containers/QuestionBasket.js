@@ -83,6 +83,7 @@ class QuestionBasket extends React.Component {
           <BasicQuestion title={question.title}
                          subTitle={question.subTitle}
                          name={question.name}
+                         questionId={question.id}
                          key={key}
                          onChange={this.handleBasicInput}
                          placeholder={question.title}/>
@@ -93,6 +94,7 @@ class QuestionBasket extends React.Component {
           <TextAreaQuestion title={question.title}
                             subTitle={question.subTitle}
                             name={question.name}
+                            questionId={question.id}
                             key={key}
                             onChange={this.handleBasicInput}
                             placeholder={question.title}/>
@@ -104,6 +106,7 @@ class QuestionBasket extends React.Component {
             title={question.title}
             subTitle={question.subTitle}
             name={question.name}
+            questionId={question.id}
             key={key}
             onChange={this.handleCheckboxInput}
             answers={JSON.parse(question.answers)}
@@ -115,6 +118,7 @@ class QuestionBasket extends React.Component {
           <BoolQuestion title={question.title}
                         subTitle={question.subTitle}
                         name={question.name}
+                        questionId={question.id}
                         key={key}
                         onChange={this.handleBoolInput}
           />
@@ -126,6 +130,7 @@ class QuestionBasket extends React.Component {
             title={question.title}
             subTitle={question.subTitle}
             name={question.name}
+            questionId={question.id}
             key={key}
             onChange={this.handleBasicInput}
             answers={JSON.parse(question.answers)}
@@ -138,6 +143,7 @@ class QuestionBasket extends React.Component {
             title={question.title}
             subTitle={question.subTitle}
             name={question.name}
+            questionId={question.id}
             key={key}
             onChange={this.handleBasicInput}
           />
@@ -159,8 +165,6 @@ class QuestionBasket extends React.Component {
         </Form>
 
         <UploadFailed open={this.state.uploadError}/>
-
-        <Button onClick={() => this.props.submitWaitingAnswers()}>Retry Submitting Answers</Button>
       </Segment>
     )
   }

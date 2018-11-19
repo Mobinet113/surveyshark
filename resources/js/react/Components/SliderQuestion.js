@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Form, Header, Segment, Radio, Menu, Divider} from 'semantic-ui-react';
+import {Form, Header, Segment, Menu} from 'semantic-ui-react';
 
 class SliderQuestion extends React.Component {
 
@@ -10,7 +10,6 @@ class SliderQuestion extends React.Component {
     this.state = {
       value: 0
     }
-
   }
 
   handleChange = (evt, data) => {
@@ -19,7 +18,8 @@ class SliderQuestion extends React.Component {
     this.props.onChange({
       target: {
         name: this.props.name,
-        value: evt
+        value: data.value,
+        questionId: this.props.questionId
       }
     })
   };
@@ -40,7 +40,7 @@ class SliderQuestion extends React.Component {
 
   render() {
     return (
-      <Segment>
+      <Segment className="slider">
         <Form.Field>
           <Header as="h2">
             {this.props.title}
@@ -64,6 +64,7 @@ SliderQuestion.defaultProps = {
   subTitle: null,
   placeholder: null,
   name: null,
+  questionId: 0,
   onChange: () => {}
 };
 
@@ -73,6 +74,7 @@ SliderQuestion.propTypes = {
   subTitle: PropTypes.string,
   placeholder: PropTypes.string,
   name: PropTypes.string,
+  questionId: PropTypes.number,
   onChange: PropTypes.func
 };
 

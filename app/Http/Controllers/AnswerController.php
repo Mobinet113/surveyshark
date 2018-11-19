@@ -40,9 +40,12 @@ class AnswerController extends Controller
 
       foreach ( $request->answers as $answerBasket) {
 
+        $answerSetId = 'AS-' . str_random(20);
+
         foreach ( $answerBasket as $answerIndex => $answeritem ) {
           $answer = new Answer();
 
+          $answer->answer_set = $answerSetId;
           $answer->question_id = 0;
           $answer->question_name = $answerIndex;
           $answer->answer = json_encode( $answeritem );
