@@ -78,7 +78,7 @@ export function submitAnswer(answers) {
 
     let payload = [ answers ];
 
-    axios.post("/api/answer/store", {answers: payload} ).then( () => {
+    return axios.post("/api/answer/store", {answers: payload} ).then( () => {
 
       dispatch(submitAnswerSuccess(answers));
 
@@ -96,7 +96,7 @@ export function submitWaitingAnswers() {
 
     let waitingAnswers = getState().answers.waiting;
 
-    axios.post("/api/answer/store", {answers: waitingAnswers} ).then( () => {
+    return axios.post("/api/answer/store", {answers: waitingAnswers} ).then( () => {
 
       dispatch(submitWaitingAnswersSuccess(waitingAnswers));
 

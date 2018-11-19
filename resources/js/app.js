@@ -14,3 +14,4 @@ require('./bootstrap');
  */
 
 require('./react/App');
+require('./admin/scripts.jquery');

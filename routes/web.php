@@ -11,7 +11,17 @@
 |
 */
 
+// Admin Routes
+
 // Public React Route
 Route::view('/{path?}', 'react')
-     ->where('path', '^((?!api|admin).)*$')
+     ->where('path', '^((?!api|admin|login|register|home).)*$')
      ->name('react');
+
+Auth::routes();
+
+Route::get('/admin', 'Admin\HomeController@index')->name('home');
+Route::get('/admin/answers', 'AnswerController@index')->name('admin.answers')->middleware('auth');
+
+Route::get('/admin/questions', 'QuestionController@index')->name('admin.questions')->middleware('auth');
+Route::post('admin/questions', 'QuestionController@store')->name('admin.questions')->middleware('auth');

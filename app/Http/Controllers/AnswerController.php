@@ -15,7 +15,8 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        //
+      $answers = Answer::all();
+      return view('admin.answers')->with([ "answers" => $answers ]);
     }
 
     /**

@@ -18,3 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('answer/store', 'AnswerController@store');
+Route::get('answers', 'AnswerController@index')->middleware('auth');
+
+Route::get('questions', 'QuestionController@indexApi');

@@ -2,31 +2,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Checkbox, Segment, Header, Form} from 'semantic-ui-react';
 
-const CheckboxQuestion = (props) => {
+class CheckboxQuestion extends React.Component {
 
-  const onToggle = (evt, data) => {
-    props.onChange(data);
+  onToggle = (evt, data) => {
+    this.props.onChange(data);
   };
 
-  return (
-    <Segment>
+  render = () => {
+    return (
+      <Segment>
 
-      <Header as="h2">
-        {props.title}
-        <Header.Subheader>{props.subTitle}</Header.Subheader>
-      </Header>
+        <Header as="h2">
+          {this.props.title}
+          <Header.Subheader>{this.props.subTitle}</Header.Subheader>
+        </Header>
 
-      {props.answers.map((answer, index) => (
+        {this.props.answers.map((answer, index) => (
 
-        <Form.Field key={index}>
-          <Checkbox label={answer.label} name={props.name} value={answer.name} onChange={onToggle} />
-        </Form.Field>
+          <Form.Field key={index}>
+            <Checkbox label={answer.label} name={this.props.name} value={answer.name} onChange={this.onToggle}/>
+          </Form.Field>
 
-      ))}
+        ))}
 
-    </Segment>
-  );
-};
+      </Segment>
+    );
+  }
+}
 
 CheckboxQuestion.defaultProps = {
   loading: false,

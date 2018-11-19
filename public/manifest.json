@@ -1,0 +1,30 @@
+{
+  "short_name": "SurveyShark",
+  "name": "SurveyShark",
+  "icons": [
+    {
+      "src": "images/icons/icon.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "images/icons/icon@2x.png",
+      "sizes": "2048x2048",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "images/icons/icon@3x.png",
+      "sizes": "3072x3072",
+      "type": "image/x-icon"
+    },{
+      "src": "images/icons/icon@3x.png",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#B33B94",
+  "orientation": "portrait",
+  "background_color": "#B33B94"
+}
