@@ -19,7 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->string('title');
             $table->string('subtitle')->nullable();
             $table->string('placeholder')->nullable();
-            $table->json('answers')->default("");
+            $table->string('answers')->nullable();
             $table->string('type')->default('text');
             $table->timestamps();
         });
